@@ -1,10 +1,15 @@
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
 .word-cloud {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: baseline;
     vertical-align: bottom;
-    width: 400px;
+    /* width: 400px; */
     /* line-height: 1rem !important; */
 }
 

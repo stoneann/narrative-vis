@@ -1,10 +1,10 @@
-Apple,15
-Banana,12
-Chair,8
-Dog,20
-Elephant,6
-Cat,18
-House,10
-Tree,14
-Car,9
-Book,16
+Apple,15,5
+Banana,12,2
+Chair,8, 2
+Dog,20,4
+Elephant,6, 6
+Cat,18, 3
+House,10, 10
+Tree,14, 4
+Car,9, 3
+Book,16, 7
