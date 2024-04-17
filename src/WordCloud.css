@@ -1,0 +1,47 @@
+.word-cloud {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: baseline;
+    vertical-align: bottom;
+    width: 400px;
+    /* line-height: 1rem !important; */
+}
+
+.word {
+    padding: 3px;
+    vertical-align: bottom;
+    /* text-align: center; */
+}
+
+.font-xs {
+    font-size: xx-small;
+}
+
+.font-xs {
+    font-size: x-small;
+}
+
+.font-s {
+    font-size: small;
+}
+
+.font-m {
+    font-size: medium;
+}
+
+.font-l {
+    font-size: large;
+}
+
+.font-xl {
+    font-size: x-large;
+}
+
+.font-xxl {
+    font-size: xx-large;
+}
+
+.font-xxl {
+    font-size: xx-large;
+}
