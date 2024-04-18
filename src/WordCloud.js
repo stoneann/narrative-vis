@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import csvFilePath from './small-data/word-cloud.csv';
+import csvFilePath from './data/word-cloud-project1.csv';
 import { parse } from 'papaparse';
 import './WordCloud.css';
 import * as d3 from "d3";
@@ -20,16 +20,24 @@ export function WordCloud() {
             .then( responseText => parse(responseText).data)
             .then( responseArray => {
                 // Find the min and max frequencies
-                let minCount = responseArray[0][1];
+                let minCount = parseInt(responseArray[0][1]);
                 let maxCount = 0;
-                let minNumPosts = responseArray[0][1];
+                let minNumPosts = parseInt(responseArray[0][1]);
                 let maxNumPosts = 0;
 
                 for (let i = 0; i < responseArray.length; i++) {
-                    maxCount = Math.max(responseArray[i][1], maxCount)
-                    minCount = Math.min(responseArray[i][1], minCount)
-                    maxNumPosts = Math.max(responseArray[i][2], maxNumPosts)
-                    minNumPosts = Math.min(responseArray[i][2], minNumPosts)
+                    if (isNaN(Math.max( parseInt(responseArray[i][1]), parseInt(maxCount) )) == false) {
+                        maxCount = Math.max( parseInt(responseArray[i][1]), parseInt(maxCount) )
+                    }
+                    if (isNaN( Math.min(parseInt(responseArray[i][1]), parseInt(minCount))) == false) {
+                        minCount =  Math.min(parseInt(responseArray[i][1]), parseInt(minCount))
+                    }
+                    if (isNaN(Math.max(parseInt(responseArray[i][2]), maxNumPosts)) == false) {
+                        maxNumPosts = Math.max(parseInt(responseArray[i][2]), maxNumPosts)
+                    }
+                    if (isNaN(Math.min(parseInt(responseArray[i][2]), minNumPosts)) == false) {
+                        minNumPosts = Math.min(parseInt(responseArray[i][2]), minNumPosts)
+                    }
                 }
                 // Find the range and divide it by the number of fonts to get the number of frequencies per font size
                 let increment = (maxCount - minCount) / fonts.length
@@ -39,8 +47,8 @@ export function WordCloud() {
                 setMinPosts(minNumPosts)
                 setData( responseArray.map((item) => {
                     return <div 
-                    style={{color: colors[ item[2] == maxNumPosts ? numColors - 1 : Math.floor((item[2] - minNumPosts) / numPostsIncrement ) ]}}
-                    className={`word ${fonts[item[1] == maxCount ? fonts.length - 1 : Math.floor((item[1] - minCount) / increment) ]}`}>
+                    style={{color: colors[ parseInt(item[2]) === maxNumPosts ? numColors - 1 : Math.floor((parseInt(item[2]) - minNumPosts) / numPostsIncrement ) ]}}
+                    className={`word ${fonts[parseInt(item[1]) === maxCount ? fonts.length - 1 : Math.floor((parseInt(item[1]) - minCount) / increment) ]}`}>
                         {item[0]}
                         </div>
                 }) )

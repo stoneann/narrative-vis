@@ -9,14 +9,13 @@
     flex-wrap: wrap;
     align-items: baseline;
     vertical-align: bottom;
-    /* width: 400px; */
-    /* line-height: 1rem !important; */
+    width: 400px;
+    border: 1px solid lightgray;
 }
 
 .word {
     padding: 3px;
     vertical-align: bottom;
-    /* text-align: center; */
 }
 
 .font-xs {
