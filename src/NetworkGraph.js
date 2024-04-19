@@ -1,6 +1,5 @@
 import * as d3 from "d3"; // we will need d3.js
 import { useEffect, useRef } from "react";
-import data from './data/network-graph-error-student.json';
 
 export const RADIUS = 4;
 
@@ -38,6 +37,7 @@ export const drawNetwork = (
 export const NetworkDiagram = ({
     width,
     height,
+    data
     }) => {
     // The force simulation mutates links and nodes, so create a copy first
     // Node positions are initialized by d3
