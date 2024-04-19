@@ -1,16 +1,15 @@
 import './App.css';
 import { WordCloud } from './WordCloud';
 import { NetworkDiagram } from './NetworkGraph';
-import dataAnswer from './data/network-graph-error-answer.json';
-import data from './data/network-graph-error-student.json';
+import data from './small-data/boxplot.json';
+import { Boxplot } from './BoxPlot';
 
 
 function App() {
   return (
     <div className="App">
       Narrative Visualization
-      <NetworkDiagram width={800} height={800} data={dataAnswer} />
-      <NetworkDiagram width={800} height={800} data={data} />
+      <Boxplot width={400} height={400} data={data} />
     </div>
   );
 }
