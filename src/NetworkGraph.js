@@ -1,8 +1,8 @@
 import * as d3 from "d3"; // we will need d3.js
 import { useEffect, useRef } from "react";
-import data from './small-data/network-graph.json';
+import data from './data/network-graph-error-student.json';
 
-export const RADIUS = 10;
+export const RADIUS = 4;
 
 export const drawNetwork = (
     context,
@@ -30,7 +30,7 @@ export const drawNetwork = (
         context.beginPath();
         context.moveTo(node.x + RADIUS, node.y);
         context.arc(node.x, node.y, RADIUS, 0, 2 * Math.PI);
-        context.fillStyle = '#000000';
+        context.fillStyle = 'red';
         context.fill();
     });
 };
@@ -63,8 +63,8 @@ export const NetworkDiagram = ({
             'link',
             d3.forceLink(links).id((d) => d.id)
         )
-        .force('collide', d3.forceCollide().radius(RADIUS))
-        .force('charge', d3.forceManyBody())
+        .force('collide', d3.forceCollide().radius(RADIUS + 10).iterations(10))
+        .force('charge', d3.forceManyBody().strength(0.01))
         .force('center', d3.forceCenter(width / 2, height / 2))
 
         // at each iteration of the simulation, draw the network diagram with the new node positions

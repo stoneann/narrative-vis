@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       Narrative Visualization
-      <NetworkDiagram width={400} height={400} />
+      <NetworkDiagram width={800} height={800} />
     </div>
   );
 }
