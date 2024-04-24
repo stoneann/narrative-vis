@@ -1,7 +1,7 @@
 import './App.css';
 import { WordCloud } from './WordCloud';
 import { NetworkDiagram } from './NetworkGraph';
-import data from './small-data/boxplot.json';
+import data from './data/boxplot.json';
 import { Boxplot } from './BoxPlot';
 
 
