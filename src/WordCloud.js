@@ -60,12 +60,12 @@ export function WordCloud() {
             <div className='word-cloud'>
                 {data}
             </div>
-                <Legend 
+                {/* <Legend 
                 title='Number of Posts That Contain the Word' 
                 minNumPosts={minPosts}
                 maxNumPosts={maxPosts}
                 numPostsIncrement={(maxPosts - minPosts) / numColors}
-                colors={colors}  />
+                colors={colors}  /> */}
         </div>
     )
 }

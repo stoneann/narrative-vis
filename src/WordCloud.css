@@ -9,8 +9,8 @@
     flex-wrap: wrap;
     align-items: baseline;
     vertical-align: bottom;
-    width: 400px;
-    border: 1px solid lightgray;
+    /* border: 1px solid lightgray; */
+    margin: 5px;
 }
 
 .word {
