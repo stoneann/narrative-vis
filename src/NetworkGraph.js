@@ -39,6 +39,7 @@ export const NetworkDiagram = ({
     width,
     height,
     data,
+    id,
     }) => {
     // The force simulation mutates links and nodes, so create a copy first
     // Node positions are initialized by d3
@@ -50,7 +51,7 @@ export const NetworkDiagram = ({
 
     const canvasRef = useRef(null);
     const tipRef = useRef(null);
-    const maxLineWidth = 50;
+    const maxLineWidth = 100;
 
     useEffect(() => {
         // set dimension of the canvas element
@@ -85,7 +86,7 @@ export const NetworkDiagram = ({
         const tipCanvas = tipRef.current;
         const tipCtx = tipCanvas?.getContext('2d');
 
-        let elem = document.querySelector("canvas");
+        let elem = document.querySelector(`#${id}`);
         let rect = elem.getBoundingClientRect();
         var offsetX = rect['x'];
         var offsetY = rect['y'];
@@ -96,21 +97,17 @@ export const NetworkDiagram = ({
         for (var i = 0; i < nodes.length; i++) {
             var dot = nodes[i]
             if (Math.abs(nodes[i].x - mouseX) < 2*RADIUS && Math.abs(nodes[i].y - mouseY) < 2*RADIUS) {
-                // tipCanvas.style.left = (dot.x) + "px";
-                // tipCanvas.style.top = (dot.y) + "px";
                 tipCtx.clearRect(0, 0, tipCanvas.width, tipCanvas.height);
                                  tipCtx.rect(0,0,tipCanvas.width,tipCanvas.height);
                 var l = 0;
                 var n = 1;
                 while (l < maxLineWidth) {
-                    // console.log(dot.value.substring(l, Math.min(l + maxLineWidth, dot.value.length)))
-                    console.log(l)
-                    // console.log(n)
-                    tipCtx.fillText(dot.value.substring(l, Math.min(l + maxLineWidth, dot.value.length)), 0, n*10)
+                    tipCtx.fillText(dot.value.substring(l, Math.min(l + maxLineWidth, dot.value.length)), 0, n*20)
                     l = maxLineWidth + l
                     n += 1
                 }
-                tipCtx.font = '10pt Helvetica';
+                tipCtx.fillText(dot.value.substring(l, Math.min(l + maxLineWidth, dot.value.length)), 0, n*20)
+                tipCtx.font = 'black 10pt Helvetica';
                 hit = true;
                 break;
             }
@@ -123,6 +120,7 @@ export const NetworkDiagram = ({
     return (
         <div className="network-graph">
         <canvas
+            id={id}
             onMouseMove={(ev) => handleMouseMove(ev)}
             ref={canvasRef}
             style={{
@@ -132,7 +130,7 @@ export const NetworkDiagram = ({
             width={width}
             height={height}
         />
-        <canvas ref={tipRef} width={width} height={50}></canvas>
+        <canvas ref={tipRef} width={width} height={65} className="tooltip"></canvas>
         </div>
     );
 };

@@ -37,11 +37,11 @@ function App() {
         <div className='text'>
           Here is a word cloud of 30 the most frequently used words in student questions. The biggest words that stand out are function, error, and test. They also happen to be the words used in the most unique posts. It’s no surprise that function is amongst the most frequently used words because the project itself asks students to code specific functions, so in order to describe a problem the word function must be used to give accurate context. What is more interesting, though, is why “error” and “test” are used so frequently. Are there common aspects about tests that confuse students? Let’s do a deeper dive into the actual questions to find out.
         </div>
-        <NetworkDiagram width={550} height={550} data={data} />
+        <NetworkDiagram width={550} height={550} data={data} id={'one'} />
         <div className='text'>
           Here are some more words
         </div>
-        {/* <NetworkDiagram width={550} height={550} data={instructorData} /> */}
+        <NetworkDiagram width={550} height={550} data={instructorData} id={'two'} />
         <div className='text'>
           Finally some more words!
         </div>

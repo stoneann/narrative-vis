@@ -4,3 +4,9 @@
     flex-direction: column;
     align-items: center;
 }
+
+.tooltip {
+    /* background-color: red; */
+    border: lightgray 1px solid;
+    padding: 3px;
+}
