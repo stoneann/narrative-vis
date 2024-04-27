@@ -1,0 +1,7 @@
+.height-250 {
+    min-height: 220px;
+    border: solid 1px lightgray;
+    width: 190px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}

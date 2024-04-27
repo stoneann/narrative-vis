@@ -1,10 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 import { legendColor } from 'd3-svg-legend';
+import './Legend.css';
 
 export function Legend({title, minNumPosts, maxNumPosts, numPostsIncrement, colors}) {
   const svgRef = useRef(null);
-  const colorScale = d3.scaleOrdinal().domain(d3.range(minNumPosts, maxNumPosts, numPostsIncrement)).range(colors);
+  const colorScale = d3.scaleOrdinal().domain(d3.range(minNumPosts, maxNumPosts, Math.floor(numPostsIncrement))).range(colors);
 
   useEffect(() => {
     const svg = d3.select(svgRef.current);
@@ -13,9 +14,10 @@ export function Legend({title, minNumPosts, maxNumPosts, numPostsIncrement, colo
     const legend = legendColor()
       .scale(colorScale)
       .title(title)
-      .shapeWidth(30) // Adjust as needed
-      .shapeHeight(10) // Adjust as needed
-      .orient('horizontal');
+      .titleWidth(80)
+      .shapeWidth(10) // Adjust as needed
+      .shapeHeight(20) // Adjust as needed
+      .orient('vertical');
 
     // Render the legend
     svg.append('g')
@@ -23,5 +25,5 @@ export function Legend({title, minNumPosts, maxNumPosts, numPostsIncrement, colo
       .call(legend);
   }, []);
 
-  return <svg ref={svgRef}  />;
+  return <svg ref={svgRef} className='height-250'  />;
 };

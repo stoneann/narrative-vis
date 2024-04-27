@@ -56,16 +56,16 @@ export function WordCloud() {
     }, [maxPosts, minPosts])
 
     return (
-        <div className='column'>
-            <div className='word-cloud'>
-                {data}
-            </div>
-                {/* <Legend 
-                title='Number of Posts That Contain the Word' 
+        <div className='row'>
+            <Legend 
+                title='# Posts with word' 
                 minNumPosts={minPosts}
                 maxNumPosts={maxPosts}
                 numPostsIncrement={(maxPosts - minPosts) / numColors}
-                colors={colors}  /> */}
+                colors={colors}  />
+            <div className='word-cloud'>
+                {data}
+            </div>
         </div>
     )
 }
