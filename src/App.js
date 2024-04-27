@@ -5,7 +5,7 @@ import data from './data/network-graph-error-student.json';
 import instructorData from './data/network-graph-error-answer.json';
 import boxplotData from './data/boxplot.json';
 import { Boxplot } from './BoxPlot';
-import { useState } from 'react';
+import ContinuousSlider from './Slider';
 
 function App() {
   return (
@@ -26,6 +26,8 @@ function App() {
         <div className='text'>
           Take a guess, how many questions does the introduction to programming Piazza course at the University of Michigan have every semester?
         </div>
+        <div className='text'></div>
+        <ContinuousSlider />
         <div className='text'>
           If it took staff members on average 5 minutes to answer a question, that’s 447 hours of staff time devoted towards answering questions each semester. What if we could reduce that time, though, by reducing the number of questions? This allows staff to reallocate time to teaching students how to debug their own code in office hours. It could lead to students being helped sooner in office hours, which would increase their chances of success.
         </div>
