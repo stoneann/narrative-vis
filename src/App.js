@@ -5,6 +5,7 @@ import data from './data/network-graph-error-student.json';
 import instructorData from './data/network-graph-error-answer.json';
 import boxplotData from './data/boxplot.json';
 import { Boxplot } from './BoxPlot';
+import { useState } from 'react';
 
 function App() {
   return (
@@ -40,11 +41,14 @@ function App() {
         <div className='text'>
           Here are some more words
         </div>
-        <NetworkDiagram width={550} height={550} data={instructorData} />
+        {/* <NetworkDiagram width={550} height={550} data={instructorData} /> */}
         <div className='text'>
           Finally some more words!
         </div>
-          <Boxplot width={550} height={550} data={boxplotData} />
+        <Boxplot width={550} height={550} data={boxplotData} />
+        <div className='text'>
+          this is the last text before opening up to the dashboard
+        </div>
       </div>
     </div>
   );
