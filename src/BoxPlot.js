@@ -4,6 +4,7 @@ import { getSummaryStats } from "./summary-stats";
 import { AxisLeft } from "./AxisLeft";
 import { AxisBottom } from "./AxisBottomCategoric";
 import { VerticalBox } from "./VerticalBox";
+import './BoxPlot.css';
 
 const MARGIN = { top: 30, right: 30, bottom: 30, left: 50 };
 
@@ -50,15 +51,15 @@ export const Boxplot = ({ width, height, data }) => {
           q3={yScale(q3)}
           min={yScale(min)}
           max={yScale(max)}
-          stroke="black"
-          fill={"#ead4f5"}
+          stroke="#08306b"
+          fill={"#deebf7"}
         />
       </g>
     );
   });
 
   return (
-    <div>
+    <div className="boxplot">
       <svg width={width} height={height}>
         <g
           width={boundsWidth}
