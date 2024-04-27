@@ -1,5 +1,6 @@
 import * as d3 from "d3"; // we will need d3.js
 import { useEffect, useRef } from "react";
+import './NetworkGraph.css';
 
 export const RADIUS = 4;
 
@@ -29,7 +30,7 @@ export const drawNetwork = (
         context.beginPath();
         context.moveTo(node.x + RADIUS, node.y);
         context.arc(node.x, node.y, RADIUS, 0, 2 * Math.PI);
-        context.fillStyle = 'red';
+        context.fillStyle = '#4292c6';
         context.fill();
     });
 };
@@ -74,7 +75,7 @@ export const NetworkDiagram = ({
     }, [width, height, nodes, links]);
 
     return (
-        <div>
+        <div className="network-graph">
         <canvas
             ref={canvasRef}
             style={{

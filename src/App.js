@@ -2,6 +2,8 @@ import './App.css';
 import { WordCloud } from './WordCloud';
 import { NetworkDiagram } from './NetworkGraph';
 import data from './data/network-graph-error-student.json';
+import instructorData from './data/network-graph-error-answer.json';
+import boxplotData from './data/boxplot.json';
 import { Boxplot } from './BoxPlot';
 
 function App() {
@@ -34,9 +36,16 @@ function App() {
         <div className='text'>
           Here is a word cloud of 30 the most frequently used words in student questions. The biggest words that stand out are function, error, and test. They also happen to be the words used in the most unique posts. It’s no surprise that function is amongst the most frequently used words because the project itself asks students to code specific functions, so in order to describe a problem the word function must be used to give accurate context. What is more interesting, though, is why “error” and “test” are used so frequently. Are there common aspects about tests that confuse students? Let’s do a deeper dive into the actual questions to find out.
         </div>
+        <NetworkDiagram width={550} height={550} data={data} />
+        <div className='text'>
+          Here are some more words
+        </div>
+        <NetworkDiagram width={550} height={550} data={instructorData} />
+        <div className='text'>
+          Finally some more words!
+        </div>
+          <Boxplot width={550} height={550} data={boxplotData} />
       </div>
-      {/* <NetworkDiagram width={550} height={550} data={data}/> */}
-      {/* <Boxplot width={400} height={400} data={data} /> */}
     </div>
   );
 }
