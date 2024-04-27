@@ -60,6 +60,7 @@ export const Boxplot = ({ width, height, data }) => {
 
   return (
     <div className="boxplot">
+      <div>Winter 2023 Question Percentage Similarity Between Previous Semesters</div>
       <svg width={width} height={height}>
         <g
           width={boundsWidth}
