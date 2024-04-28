@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/narrative-vis/static/css/main.f97281e0.css",
+    "main.js": "/narrative-vis/static/js/main.bd022484.js",
+    "static/js/453.eb884b1c.chunk.js": "/narrative-vis/static/js/453.eb884b1c.chunk.js",
+    "static/media/speaker_profile_crop.png": "/narrative-vis/static/media/speaker_profile_crop.63ba48b9bf2819ea41ea.png",
+    "static/media/project3.csv": "/narrative-vis/static/media/project3.c21471a6d667acdaf8ee.csv",
+    "index.html": "/narrative-vis/index.html",
+    "main.f97281e0.css.map": "/narrative-vis/static/css/main.f97281e0.css.map",
+    "main.bd022484.js.map": "/narrative-vis/static/js/main.bd022484.js.map",
+    "453.eb884b1c.chunk.js.map": "/narrative-vis/static/js/453.eb884b1c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f97281e0.css",
+    "static/js/main.bd022484.js"
+  ]
+}
