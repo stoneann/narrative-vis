@@ -59,18 +59,26 @@ function Dashboard() {
     }
 
     return (
-        <div className='column margin gray'>
-            <h1>Dashboard</h1>
-            <div className='row'>                
+        <div className='column padding gray'>
+            <h1>Exploration</h1>
+            <div className='row white padding-small'>                
                 <WordCloud handleWordClicked={handleWordClick} wordClicked={wordClicked}/>
             </div>
             <div className='row'>
-                <NetworkDiagram width={width*0.55} height={550} data={data} removedNodeIds={removedNodeIds} id={'dashboard-question'} />
-                <Boxplot width={400} height={550} data={boxplotData} removedNodeIds={removedNodeIds} title={'Winter 2023 Question Percentage Similarity Between Previous Semesters'} />
+                <div className='white margin-top margin-right padding-small center'>
+                    <NetworkDiagram width={width*0.55} height={550} data={data} removedNodeIds={removedNodeIds} id={'dashboard-question'} />
+                </div>
+                <div className='white margin-top padding-small'>
+                    <Boxplot width={400} height={550} data={boxplotData} removedNodeIds={removedNodeIds} title={'Winter 2023 Question Percentage Similarity Between Previous Semesters'} />
+                </div>
             </div>
             <div className='row'>
-                <NetworkDiagram width={width*0.55} height={550} data={answerData} removedNodeIds={removedNodeIds} id={'dashboard-answer'} />
-                <Boxplot width={400} height={550} data={boxplotAnswerData} removedNodeIds={removedNodeIds} title={'Winter 2023 Answer Percentage Similarity Between Previous Semesters'} />
+                <div className='white margin-top margin-right padding-small center'>
+                    <NetworkDiagram width={width*0.55} height={550} data={answerData} removedNodeIds={removedNodeIds} id={'dashboard-answer'} />
+                </div>
+                <div className='white margin-top padding-small'>
+                    <Boxplot width={400} height={550} data={boxplotAnswerData} removedNodeIds={removedNodeIds} title={'Winter 2023 Answer Percentage Similarity Between Previous Semesters'} />
+                </div>
             </div>
         </div>
     )

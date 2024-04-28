@@ -91,6 +91,7 @@ function App() {
         <div className='text'>
           <a href='https://www.linkedin.com/in/ann-stone-835264197/'>LinkedIn</a>
         </div>
+        <div className='text'></div>
       </div>
       <Dashboard />
     </div>

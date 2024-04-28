@@ -8,8 +8,24 @@
     flex-direction: row;
 }
 
-.margin {
-    padding: 5%;
+.padding {
+    padding: 50px;
+}
+
+.padding-small {
+    padding: 10px;
+}
+
+.margin-right {
+    margin-right: 20px;
+}
+
+.margin-top {
+    margin-top: 20px;
+}
+
+.border {
+    border: 5px red solid;
 }
 
 .box-shadow {
@@ -22,8 +38,18 @@
 
 .gray {
     /* background-color: lightgray; */
+    background-color: rgb(249, 249, 249);
 }
 
 .white {
-    /* background-color: white; */
+    background-color: white;
+}
+
+.height-550 {
+    height: 550px;
+}
+
+.center {
+    display: flex;
+    align-items: center;
 }

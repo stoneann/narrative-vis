@@ -5,3 +5,9 @@
     align-items: center;
     flex-direction: column;
 }
+
+.boxplot-title {
+    text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
+}

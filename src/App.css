@@ -66,6 +66,7 @@
   letter-spacing: -0.003em;
   margin-bottom: -0.46em;
   font-style: normal;
-  font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  /* font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif; */
   font-weight: 400;
+  font-family: source-serif-pro, Georgia, Cambria, "Times New Roman", Times, serif;
 }

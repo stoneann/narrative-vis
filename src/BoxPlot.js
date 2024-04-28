@@ -62,7 +62,7 @@ export const Boxplot = ({ width, height, data, removedNodeIds, title }) => {
 
   return (
     <div className="boxplot">
-      <div>{title}</div>
+      <div className="boxplot-title">{title}</div>
       <svg width={width} height={height}>
         <g
           width={boundsWidth}
