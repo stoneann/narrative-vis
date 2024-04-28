@@ -5,7 +5,7 @@ import './WordCloud.css';
 import * as d3 from "d3";
 import { Legend } from "./Legend";
 
-export function WordCloud() {
+export function WordCloud({ handleWordClicked, wordClicked }) {
     const fonts = ['font-xxs', 'font-xs', 'font-s', 'font-m', 'font-l', 'font-xl','font-xxl'];
     const numColors = 7
     const [data, setData] = useState();
@@ -47,13 +47,17 @@ export function WordCloud() {
                 setMinPosts(minNumPosts)
                 setData( responseArray.map((item) => {
                     return <div 
-                    style={{color: colors[ parseInt(item[2]) === maxNumPosts ? numColors - 1 : Math.floor((parseInt(item[2]) - minNumPosts) / numPostsIncrement ) ]}}
+                    onClick={() => handleWordClicked(item[0])}
+                    style={{
+                        opacity: (wordClicked == '' || wordClicked == item[0]) ? 1 : 0.3,
+                        color: colors[ (parseInt(item[2]) === maxNumPosts || wordClicked == item[0]) ? numColors - 1 : Math.floor((parseInt(item[2]) - minNumPosts) / numPostsIncrement ) 
+                    ]}}
                     className={`word ${fonts[parseInt(item[1]) === maxCount ? fonts.length - 1 : Math.floor((parseInt(item[1]) - minCount) / increment) ]}`}>
                         {item[0]}
                         </div>
                 }) )
             });
-    }, [maxPosts, minPosts])
+    }, [maxPosts, minPosts, wordClicked])
 
     return (
         <div className='row'>

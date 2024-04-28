@@ -6,6 +6,7 @@ import instructorData from './data/network-graph-error-answer.json';
 import boxplotData from './data/boxplot.json';
 import { Boxplot } from './BoxPlot';
 import ContinuousSlider from './Slider';
+import Dashboard from './Dashboard';
 
 function App() {
   return (
@@ -33,7 +34,7 @@ function App() {
           In order to reduce the number of questions, we first must find out what the questions are about. By finding commonly asked questions and struggle points, we can answer student questions before they have to ask them. Let’s begin our investigation by focusing on project 3 during the Winter 2023 semester. 
         </div>
         <div className='text'></div>
-        <WordCloud />
+        <WordCloud handleWordClicked={() => {}} wordClicked="" />
         <div className='text'>
           The word cloud above shows the most frequently used words in student questions. Evaluating the most frequently used words can give us an approximation of what general concepts spur the most questions. The biggest words that stand out are function, error, and test. They also happen to be the words used in the most unique posts. It’s no surprise that “function” is amongst the most frequently used words because project 3 asks students to code specific functions, so describing a problem requires the word “function”. What is more interesting, though, is why “error” and “test” are used so frequently. What aspects of these concepts do students find confusing? Let’s do a deeper dive into the actual questions to find out.
         </div>
@@ -62,6 +63,7 @@ function App() {
           A further point of research in this topic would be improving the algorithm used to determine similarity. A better algorithm than the cosine similarity would be the ability to semantically match text. This would allow the algorithm to highlight questions that are the same, even if the words used were different. 
         </div>
       </div>
+      <Dashboard />
     </div>
   );
 }
