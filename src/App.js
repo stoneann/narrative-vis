@@ -1,9 +1,10 @@
 import './App.css';
 import { WordCloud } from './WordCloud';
 import { NetworkDiagram } from './NetworkGraph';
-import questionData from './data/network-graph-project3.json';
-import answerData from './data/network-graph-project3-answer.json';
-import boxplotData from './data/boxplot.json';
+import questionData from './data/nodes_and_links/question/W23/project3.json';
+import answerData from './data/nodes_and_links/answer/W23/project3.json';
+import boxplotData from './data/max_similarity/question/project3.json';
+import idData from './data/ids.json';
 import { Boxplot } from './BoxPlot';
 import ContinuousSlider from './Slider';
 import Dashboard from './Dashboard';
@@ -16,8 +17,8 @@ function App() {
     var newWord = "error"
     var list = []
 
-    for (var i = 0; i < questionData.nodes.length; i++) {
-      var words = questionData.nodes[i].processedValue.split(" ")
+    for (var i = 0; i < idData.length; i++) {
+      var words = idData[i].value.split(" ")
       var found = false
       words.forEach((word) => {
           if (word == newWord) {
@@ -25,7 +26,7 @@ function App() {
           }
       })
       if (!found) {
-          list.push(questionData.nodes[i].id)
+          list.push(idData[i].id)
       }
     }
     
@@ -68,7 +69,7 @@ function App() {
         <div className='text'>
           Error messages are an integral part of the Introduction to Programming course, thus are prevalent every semester. If students are confused on error messages in Winter 2023, are students in other semesters as well? Let’s find out.
         </div>
-        <Boxplot width={550} height={550} data={boxplotData} />
+        <Boxplot width={550} height={550} data={boxplotData} removedNodeIds={removedNodeIds} title={'Winter 2023 Question Percentage Similarity Between Previous Semesters'} />
         <div className='text'>
           The graph above compares each question in the Winter 2023 semester to all questions in the previous semester and finds its max similarity in each semester. The distribution across semesters is fairly the same across semesters, with most posts falling in the 35% to 55% range. Questions that have this much similarity may be able to give students enough information to answer their own question. A quarter of the questions are nearly identical, falling in the 55% to 85% range. These are questions that instructors have to answer again and again each semester. Having questions this similar each semester reveals the amount of staff time wasted re answering questions. Providing more resources for confusing concepts will be beneficial for students every semester.        
         </div>

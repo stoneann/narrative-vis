@@ -8,14 +8,16 @@ import './BoxPlot.css';
 
 const MARGIN = { top: 30, right: 30, bottom: 30, left: 50 };
 
-export const Boxplot = ({ width, height, data }) => {
+export const Boxplot = ({ width, height, data, removedNodeIds }) => {
   // The bounds (= area inside the axis) is calculated by substracting the margins from total width / height
   const boundsWidth = width - MARGIN.right - MARGIN.left;
   const boundsHeight = height - MARGIN.top - MARGIN.bottom;
 
+  data = data.filter(( el ) => !removedNodeIds.includes( el.id ))
+
   // Compute everything derived from the dataset:
   const { chartMin, chartMax, groups } = useMemo(() => {
-    const [chartMin, chartMax] = d3.extent(data.map((d) => d.value));
+    const [chartMin, chartMax] = [0, 1] // d3.extent(data.map((d) => d.value));
     const groups = [...new Set(data.map((d) => d.name))];
     return { chartMin, chartMax, groups };
   }, [data]);

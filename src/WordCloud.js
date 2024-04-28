@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import csvFilePath from './data/word-cloud-project3.csv';
+import csvFilePath from './data/word_frequency/W23/project3.csv';
 import { parse } from 'papaparse';
 import './WordCloud.css';
 import * as d3 from "d3";

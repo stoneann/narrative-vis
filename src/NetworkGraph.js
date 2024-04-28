@@ -100,11 +100,11 @@ export const NetworkDiagram = ({
                 var l = 0;
                 var n = 1;
                 while (l < maxLineWidth) {
-                    tipCtx.fillText(dot.rawValue.substring(l, Math.min(l + maxLineWidth, dot.rawValue.length)), 0, n*20)
+                    tipCtx.fillText(dot.value.substring(l, Math.min(l + maxLineWidth, dot.value.length)), 0, n*20)
                     l = maxLineWidth + l
                     n += 1
                 }
-                tipCtx.fillText(dot.rawValue.substring(l, Math.min(l + maxLineWidth, dot.rawValue.length)), 0, n*20)
+                tipCtx.fillText(dot.value.substring(l, Math.min(l + maxLineWidth, dot.value.length)), 0, n*20)
                 tipCtx.font = 'black 10pt Helvetica';
                 hit = true;
                 break;
