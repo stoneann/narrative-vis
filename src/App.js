@@ -1,14 +1,37 @@
 import './App.css';
 import { WordCloud } from './WordCloud';
 import { NetworkDiagram } from './NetworkGraph';
-import data from './data/network-graph-error-student.json';
-import instructorData from './data/network-graph-error-answer.json';
+import questionData from './data/network-graph-project3.json';
+import answerData from './data/network-graph-project3-answer.json';
 import boxplotData from './data/boxplot.json';
 import { Boxplot } from './BoxPlot';
 import ContinuousSlider from './Slider';
 import Dashboard from './Dashboard';
+import { useEffect, useState } from 'react';
 
 function App() {
+  const [removedNodeIds, setRemovedNodeIds] = useState([])
+
+  useEffect(() => {
+    var newWord = "error"
+    var list = []
+
+    for (var i = 0; i < questionData.nodes.length; i++) {
+      var words = questionData.nodes[i].processedValue.split(" ")
+      var found = false
+      words.forEach((word) => {
+          if (word == newWord) {
+              found = true
+          }
+      })
+      if (!found) {
+          list.push(questionData.nodes[i].id)
+      }
+    }
+    
+    setRemovedNodeIds(list);
+  }, [])
+
   return (
     <div className="App">
       <div className='body'>
@@ -38,7 +61,7 @@ function App() {
         <div className='text'>
           The word cloud above shows the most frequently used words in student questions. Evaluating the most frequently used words can give us an approximation of what general concepts spur the most questions. The biggest words that stand out are function, error, and test. They also happen to be the words used in the most unique posts. It’s no surprise that “function” is amongst the most frequently used words because project 3 asks students to code specific functions, so describing a problem requires the word “function”. What is more interesting, though, is why “error” and “test” are used so frequently. What aspects of these concepts do students find confusing? Let’s do a deeper dive into the actual questions to find out.
         </div>
-        <NetworkDiagram width={550} height={550} data={data} id={'one'} />
+        <NetworkDiagram width={550} height={550} data={questionData} id={'one'} removedNodeIds={removedNodeIds} />
         <div className='text'>
           Each dot in the network graph represents one question asked in project 3 Winter 2023 that contains the word “error” in it. Any dots connected by a line have a similarity of above 60%. There are 16 groups of similar posts that can reveal the most confusing concepts for students. Looking at the biggest group of similar questions positioned in the center of the graph, each question asks a version of “what does this error message mean”. This shows a potential gap in the teaching and resources provided by the course - reading and understanding error messages. By providing these resources, staff can spend less time explaining the parts of an error message and more time helping students fix these error messages.         
         </div>
@@ -52,7 +75,7 @@ function App() {
         <div className='text'>
         Analyzing student questions is not the only way we can find ways to improve the resources and teaching in the Introduction to Programming course. Instructor responses can also reveal what knowledge students are missing. Let’s do a deeper dive into the actual answers to find out.
         </div>
-        <NetworkDiagram width={550} height={550} data={instructorData} id={'two'} />
+        <NetworkDiagram width={550} height={550} data={answerData} id={'two'} removedNodeIds={removedNodeIds} />
         <div className='text'>
           Looking at the second biggest interconnected chunk, all of those data points ask students to run their code in CAEN with the address sanitizer off. This is a very useful debugging technique in the course. Because students must be directed to run their code in CAEN, it shows that the current resources on debugging techniques does not emphasize enough to do so. This could be a potential improvement to the course so students can more thoroughly attempt to fix their errors before asking.
         </div>

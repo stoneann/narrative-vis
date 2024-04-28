@@ -40,14 +40,12 @@ export const NetworkDiagram = ({
     height,
     data,
     id,
+    removedNodeIds
     }) => {
     // The force simulation mutates links and nodes, so create a copy first
     // Node positions are initialized by d3
-    const links = data.links.map((d) => ({ ...d }));
-    const nodes = data.nodes.map((d) => ({ ...d }));
-
-    // const [currNodeIndex, setCurrNodeIndex] = useState(-1);
-    // const [text, setText] = useState('')
+    const links = data.links.map((d) => ({ ...d })).filter( ( el ) => !removedNodeIds.includes( el.source ) && !removedNodeIds.includes( el.target )  );
+    const nodes = data.nodes.map((d) => ({ ...d })).filter( ( el ) => !removedNodeIds.includes( el.id ) );
 
     const canvasRef = useRef(null);
     const tipRef = useRef(null);
@@ -102,11 +100,11 @@ export const NetworkDiagram = ({
                 var l = 0;
                 var n = 1;
                 while (l < maxLineWidth) {
-                    tipCtx.fillText(dot.value.substring(l, Math.min(l + maxLineWidth, dot.value.length)), 0, n*20)
+                    tipCtx.fillText(dot.rawValue.substring(l, Math.min(l + maxLineWidth, dot.rawValue.length)), 0, n*20)
                     l = maxLineWidth + l
                     n += 1
                 }
-                tipCtx.fillText(dot.value.substring(l, Math.min(l + maxLineWidth, dot.value.length)), 0, n*20)
+                tipCtx.fillText(dot.rawValue.substring(l, Math.min(l + maxLineWidth, dot.rawValue.length)), 0, n*20)
                 tipCtx.font = 'black 10pt Helvetica';
                 hit = true;
                 break;
