@@ -46,10 +46,21 @@ function App() {
         </div>
         <Boxplot width={550} height={550} data={boxplotData} />
         <div className='text'>
-          The graph above compares each question in the Winter 2023 semester to all questions in the previous semester and finds its max similarity in each semester. The distribution across semesters is fairly the same across semesters, with most posts falling in the 35% to 55% range. Questions that have this much similarity may be able to give students enough information to answer their own question. A quarter of the questions are nearly identical, falling in the 55% to 85% range. These are questions that instructors have to answer again and again each semester. Having questions this similar each semester reveals the amount of staff time wasted re answering questions. Providing more resources for confusing concepts will be beneficial for students each semester.        
+          The graph above compares each question in the Winter 2023 semester to all questions in the previous semester and finds its max similarity in each semester. The distribution across semesters is fairly the same across semesters, with most posts falling in the 35% to 55% range. Questions that have this much similarity may be able to give students enough information to answer their own question. A quarter of the questions are nearly identical, falling in the 55% to 85% range. These are questions that instructors have to answer again and again each semester. Having questions this similar each semester reveals the amount of staff time wasted re answering questions. Providing more resources for confusing concepts will be beneficial for students every semester.        
         </div>
-        {/* <NetworkDiagram width={550} height={550} data={instructorData} id={'two'} /> */}
-
+        <div className='text'>
+        Analyzing student questions is not the only way we can find ways to improve the resources and teaching in the Introduction to Programming course. Instructor responses can also reveal what knowledge students are missing. Let’s do a deeper dive into the actual answers to find out.
+        </div>
+        <NetworkDiagram width={550} height={550} data={instructorData} id={'two'} />
+        <div className='text'>
+          Looking at the second biggest interconnected chunk, all of those data points ask students to run their code in CAEN with the address sanitizer off. This is a very useful debugging technique in the course. Because students must be directed to run their code in CAEN, it shows that the current resources on debugging techniques does not emphasize enough to do so. This could be a potential improvement to the course so students can more thoroughly attempt to fix their errors before asking.
+        </div>
+        <div className='text'>
+          One of the most key observations to make is that, unlike the question node groups, answer node groups are very interconnected. This could be because instructors know the correct verbage to use for particular problems. The algorithm used to determine similarity in this article is a simple cosine similarity, which only compares the exact words used in each text. If a student doesn’t know the correct verbage to use, it would make searching for the answer on Piazza difficult because the search on piazza also only compares exact words. This would result in duplicate questions being asked without the students realizing. 
+        </div>
+        <div className='text'>
+          A further point of research in this topic would be improving the algorithm used to determine similarity. A better algorithm than the cosine similarity would be the ability to semantically match text. This would allow the algorithm to highlight questions that are the same, even if the words used were different. 
+        </div>
       </div>
     </div>
   );
