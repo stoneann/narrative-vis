@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import csvFilePath from './data/word-cloud-project1.csv';
+import csvFilePath from './data/word-cloud-project3.csv';
 import { parse } from 'papaparse';
 import './WordCloud.css';
 import * as d3 from "d3";
@@ -12,6 +12,7 @@ export function WordCloud({ handleWordClicked, wordClicked }) {
     const colors = d3.schemeBlues[numColors];
     const [minPosts, setMinPosts] = useState(0)
     const [maxPosts, setMaxPosts] = useState(140)
+    const numDisplayedWords = 100
 
     useEffect(() => {
         // Get data from CSV
@@ -25,7 +26,7 @@ export function WordCloud({ handleWordClicked, wordClicked }) {
                 let minNumPosts = parseInt(responseArray[0][1]);
                 let maxNumPosts = 0;
 
-                for (let i = 0; i < responseArray.length; i++) {
+                for (let i = 0; i < numDisplayedWords; i++) {
                     if (isNaN(Math.max( parseInt(responseArray[i][1]), parseInt(maxCount) )) == false) {
                         maxCount = Math.max( parseInt(responseArray[i][1]), parseInt(maxCount) )
                     }
@@ -45,7 +46,7 @@ export function WordCloud({ handleWordClicked, wordClicked }) {
                 // Map each word to its size
                 setMaxPosts(maxNumPosts)
                 setMinPosts(minNumPosts)
-                setData( responseArray.map((item) => {
+                setData( responseArray.slice(0, numDisplayedWords).map((item) => {
                     return <div 
                     onClick={() => handleWordClicked(item[0])}
                     style={{
@@ -60,13 +61,15 @@ export function WordCloud({ handleWordClicked, wordClicked }) {
     }, [maxPosts, minPosts, wordClicked])
 
     return (
-        <div className='row'>
+        <div className='row max-height'>
+            <div>
             <Legend 
                 title='# Posts with word' 
                 minNumPosts={minPosts}
                 maxNumPosts={maxPosts}
                 numPostsIncrement={(maxPosts - minPosts) / numColors}
                 colors={colors}  />
+            </div>
             <div className='word-cloud'>
                 {data}
             </div>

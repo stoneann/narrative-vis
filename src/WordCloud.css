@@ -3,6 +3,10 @@
     flex-direction: column;
 }
 
+.max-height {
+    max-height: 500px;
+}
+
 .word-cloud {
     display: flex;
     flex-direction: row;
@@ -18,7 +22,7 @@
     vertical-align: bottom;
 }
 
-.font-xs {
+.font-xxs {
     font-size: xx-small;
 }
 
