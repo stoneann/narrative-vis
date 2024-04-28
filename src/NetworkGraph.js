@@ -68,7 +68,7 @@ export const NetworkDiagram = ({
             'link',
             d3.forceLink(links).id((d) => d.id)
         )
-        .force('collide', d3.forceCollide().radius(RADIUS + 10).iterations(10))
+        .force('collide', d3.forceCollide().radius(RADIUS + 10).iterations(5))
         .force('charge', d3.forceManyBody().strength(0.01))
         .force('center', d3.forceCenter(width / 2, height / 2))
 

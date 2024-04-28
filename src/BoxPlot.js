@@ -8,7 +8,7 @@ import './BoxPlot.css';
 
 const MARGIN = { top: 30, right: 30, bottom: 30, left: 50 };
 
-export const Boxplot = ({ width, height, data, removedNodeIds }) => {
+export const Boxplot = ({ width, height, data, removedNodeIds, title }) => {
   // The bounds (= area inside the axis) is calculated by substracting the margins from total width / height
   const boundsWidth = width - MARGIN.right - MARGIN.left;
   const boundsHeight = height - MARGIN.top - MARGIN.bottom;
@@ -62,7 +62,7 @@ export const Boxplot = ({ width, height, data, removedNodeIds }) => {
 
   return (
     <div className="boxplot">
-      <div>Winter 2023 Question Percentage Similarity Between Previous Semesters</div>
+      <div>{title}</div>
       <svg width={width} height={height}>
         <g
           width={boundsWidth}
