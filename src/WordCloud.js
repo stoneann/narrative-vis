@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
-import csvFilePath from './data/word_frequency/W23/project3.csv';
 import { parse } from 'papaparse';
 import './WordCloud.css';
 import * as d3 from "d3";
 import { Legend } from "./Legend";
 
-export function WordCloud({ handleWordClicked, wordClicked }) {
+export function WordCloud({ handleWordClicked, wordClicked, dataPath }) {
     const fonts = ['font-xxs', 'font-xs', 'font-s', 'font-m', 'font-l', 'font-xl','font-xxl'];
     const numColors = 7
     const [data, setData] = useState();
@@ -16,10 +15,11 @@ export function WordCloud({ handleWordClicked, wordClicked }) {
 
     useEffect(() => {
         // Get data from CSV
-        fetch( csvFilePath )
+        fetch( dataPath )
             .then( response => response.text() )
             .then( responseText => parse(responseText).data)
             .then( responseArray => {
+                console.log(responseArray)
                 // Find the min and max frequencies
                 let minCount = parseInt(responseArray[0][1]);
                 let maxCount = 0;
@@ -58,7 +58,7 @@ export function WordCloud({ handleWordClicked, wordClicked }) {
                         </div>
                 }) )
             });
-    }, [maxPosts, minPosts, wordClicked])
+    }, [maxPosts, minPosts, wordClicked, dataPath])
 
     return (
         <div className='row max-height'>

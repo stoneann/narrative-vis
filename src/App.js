@@ -9,6 +9,8 @@ import { Boxplot } from './BoxPlot';
 import ContinuousSlider from './Slider';
 import Dashboard from './Dashboard';
 import { useEffect, useState } from 'react';
+import csvFilePath from './data/word_frequency/W23/project3.csv';
+
 
 function App() {
   const [removedNodeIds, setRemovedNodeIds] = useState([])
@@ -58,7 +60,7 @@ function App() {
           In order to reduce the number of questions, we first must find out what the questions are about. By finding commonly asked questions and struggle points, we can answer student questions before they have to ask them. Let’s begin our investigation by focusing on project 3 during the Winter 2023 semester. 
         </div>
         <div className='text'></div>
-        <WordCloud handleWordClicked={() => {}} wordClicked="" />
+        <WordCloud handleWordClicked={() => {}} wordClicked="" dataPath={csvFilePath} />
         <div className='text'>
           The word cloud above shows the most frequently used words in student questions. Evaluating the most frequently used words can give us an approximation of what general concepts spur the most questions. The biggest words that stand out are “card”, “player, “error”, and “function”. They also happen to be the words used in the most unique posts. It’s no surprise that “function”, “card”, and “player” are amongst the most frequently used words because project 3 asks students to code functions related to cards and players, so describing a problem requires these words. What is more interesting, though, is why “error” is used so frequently. What aspects of errors do students find confusing? Let’s do a deeper dive into the actual questions to find out.        </div>
         <NetworkDiagram width={550} height={550} data={questionData} id={'one'} removedNodeIds={removedNodeIds} />
