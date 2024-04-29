@@ -5,13 +5,15 @@ import * as d3 from "d3";
 import { Legend } from "./Legend";
 
 export function WordCloud({ handleWordClicked, wordClicked, dataPath }) {
-    const fonts = ['font-xxs', 'font-xs', 'font-s', 'font-m', 'font-l', 'font-xl','font-xxl'];
+    const fonts = [ 'font-xs', 'font-s', 'font-m', 'font-l', 'font-xl','font-xxl'];
     const numColors = 7
     const [data, setData] = useState();
-    const colors = d3.schemeBlues[numColors];
-    const [minPosts, setMinPosts] = useState(0)
-    const [maxPosts, setMaxPosts] = useState(140)
+    // const [minPosts, setMinPosts] = useState(0)
+    // const [maxPosts, setMaxPosts] = useState(140)
     const numDisplayedWords = 100
+    const [legend, setLegend] = useState(
+        <div></div>
+    )
 
     useEffect(() => {
         // Get data from CSV
@@ -19,7 +21,6 @@ export function WordCloud({ handleWordClicked, wordClicked, dataPath }) {
             .then( response => response.text() )
             .then( responseText => parse(responseText).data)
             .then( responseArray => {
-                console.log(responseArray)
                 // Find the min and max frequencies
                 let minCount = parseInt(responseArray[0][1]);
                 let maxCount = 0;
@@ -42,33 +43,32 @@ export function WordCloud({ handleWordClicked, wordClicked, dataPath }) {
                 }
                 // Find the range and divide it by the number of fonts to get the number of frequencies per font size
                 let increment = (maxCount - minCount) / fonts.length
-                let numPostsIncrement = (maxNumPosts - minNumPosts) / numColors
                 // Map each word to its size
-                setMaxPosts(maxNumPosts)
-                setMinPosts(minNumPosts)
+                const colorScale = d3.scaleSequentialLog().domain([minNumPosts, maxNumPosts]).range(["#4292c6", "#08306b"])
+
                 setData( responseArray.slice(0, numDisplayedWords).map((item) => {
                     return <div 
                     onClick={() => handleWordClicked(item[0])}
                     style={{
                         opacity: (wordClicked == '' || wordClicked == item[0]) ? 1 : 0.3,
-                        color: colors[ (parseInt(item[2]) === maxNumPosts || wordClicked == item[0]) ? numColors - 1 : Math.floor((parseInt(item[2]) - minNumPosts) / numPostsIncrement ) 
-                    ]}}
+                        color: colorScale(parseInt(item[2])), 
+                    }}
                     className={`word ${fonts[parseInt(item[1]) === maxCount ? fonts.length - 1 : Math.floor((parseInt(item[1]) - minCount) / increment) ]}`}>
                         {item[0]}
                         </div>
                 }) )
+                setLegend((
+                    <Legend 
+                        title='# Posts with word' 
+                        colorScale={colorScale}  />
+                ))
             });
-    }, [maxPosts, minPosts, wordClicked, dataPath])
+    }, [ wordClicked, dataPath])
 
     return (
         <div className='row max-height'>
             <div>
-            <Legend 
-                title='# Posts with word' 
-                minNumPosts={minPosts}
-                maxNumPosts={maxPosts}
-                numPostsIncrement={(maxPosts - minPosts) / numColors}
-                colors={colors}  />
+                {legend}
             </div>
             <div className='word-cloud'>
                 {data}

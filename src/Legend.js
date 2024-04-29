@@ -3,9 +3,8 @@ import * as d3 from 'd3';
 import { legendColor } from 'd3-svg-legend';
 import './Legend.css';
 
-export function Legend({title, minNumPosts, maxNumPosts, numPostsIncrement, colors}) {
+export function Legend({title, colorScale}) {
   const svgRef = useRef(null);
-  const colorScale = d3.scaleOrdinal().domain(d3.range(minNumPosts, maxNumPosts, Math.floor(numPostsIncrement))).range(colors);
 
   useEffect(() => {
     const svg = d3.select(svgRef.current);
