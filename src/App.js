@@ -39,7 +39,7 @@ function App() {
     <div className="App">
       <div className='body'>
         <div className='header'>
-          <div className='title'>Informational Title</div>
+          <div className='title'>Course pitfalls - Can we find them?</div>
           <div className='row'>
             <div>
               <img className='round-img' src={require('./speaker_profile_crop.png')} alt='Photo'/>
