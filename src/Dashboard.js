@@ -38,24 +38,29 @@ function Dashboard() {
     const [removedNodeIds, setRemovedNodeIds] = useState([])
 
     const handleWordClick = (newWord) => {
-        setWordClicked(newWord)
+        if (wordClicked == newWord) {
+            setWordClicked('')
+            newWord = ''
+            setRemovedNodeIds([])
+        } else {
+            setWordClicked(newWord)
+            var list = []
 
-        var list = []
-
-        for (var i = 0; i < idData.length; i++) {
-            var words = idData[i].value.split(" ")
-            var found = false
-            words.forEach((word) => {
-                if (word == newWord) {
-                    found = true
+            for (var i = 0; i < idData.length; i++) {
+                var words = idData[i].value.split(" ")
+                var found = false
+                words.forEach((word) => {
+                    if (word == newWord) {
+                        found = true
+                    }
+                })
+                if (!found) {
+                    list.push(idData[i].id)
                 }
-            })
-            if (!found) {
-                list.push(idData[i].id)
             }
+            
+            setRemovedNodeIds(list);
         }
-        
-        setRemovedNodeIds(list);
     }
 
     return (
