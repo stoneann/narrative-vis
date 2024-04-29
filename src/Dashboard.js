@@ -106,17 +106,21 @@ function Dashboard() {
     return (
         <div className='column padding gray'>
             <h1>Exploration</h1>
-            <div className='row white padding-small'> 
-                <div className="round-select">
-                      Select a Project: 
+            <div className='row'> 
+                <div className="column padding-small margin-right select">
+                    <div className='white padding-small center column'>
+                    <h3 className='center-text'>Select a Project:</h3> 
                       <select className="dropdown"
                         onChange={(e) => setProject(e.target.value - 1)}
                         defaultValue={project + 1}
                       >
                         {projects.map(it => <option key={it}>{it + 1}</option>)}
-                      </select>
-                    </div>               
-                <WordCloud handleWordClicked={handleWordClick} wordClicked={wordClicked} dataPath={wordFrequency[project]} />
+                    </select>
+                    </div>
+                </div> 
+                <div className='white padding-small'>
+                    <WordCloud handleWordClicked={handleWordClick} wordClicked={wordClicked} dataPath={wordFrequency[project]} />
+                </div>              
             </div>
             <div className='row'>
                 <div className='white margin-top margin-right padding-small center'>

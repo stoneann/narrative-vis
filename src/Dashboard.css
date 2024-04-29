@@ -53,3 +53,18 @@
     display: flex;
     align-items: center;
 }
+
+.center-text {
+    text-align: center;
+}
+
+.select {
+    display: flex;
+    width: 400px;
+    /* align-content: center; */
+    justify-content: center;
+}
+
+.dropdown {
+    font-size: large;
+}
